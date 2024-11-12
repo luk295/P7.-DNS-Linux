@@ -14,46 +14,49 @@ Creo o `docker-compose.yml`
 ```
 
 services:
+  # creo a maquina chamada bind
   bind:
-    image: internetsystemsconsortium/bind9:9.18
-    container_name: dns_Practica_7
+    image: internetsystemsconsortium/bind9:9.18  # imaxe de bind9
+    container_name: dns_Practica_7 # nome do contenedor
 
-    tty: true
-    ports:
+    tty: true 
+    ports: # puertos da maquina local á virtual
       - 55:53/udp
       - 55:53/tcp
     #- 127.0.0.1:953:953/tcp
-    volumes:
+    volumes: # carpetas que se comparten, é dicir, o contenido que se crea nas máquinas virtuais a partir da máquina local
     #  - ./configuracionOpciones:/etc/bind
       - ./config:/etc/bind/
       - ./zonas:/var/lib/bind/
     
-    networks:
-      P7:
-        ipv4_address: 172.30.10.1 #ip fixa do servidor
-      
+    networks: 
+      P7: # aquí indícolle que utilice a rede p7, creada nun nivel superior na xerarquía do yml.
+        ipv4_address: 172.30.10.1 # ip de dirección fixa do servidor
+    
+    # os mesmos campos que á de enrriba, con excepción do dns. 
   cliente:
-    image: alpine  
+    image: alpine   
     container_name: p7-alpine
     tty: true
     
     dns:
-      - 172.30.10.1
+      - 172.30.10.1 # dirección do dns ó que vai facer as peticións.
     networks:
       P7:
-        ipv4_address: 172.30.10.88
+        ipv4_address: 172.30.10.88 # ip da máquina
        #caracteristicas de red. rango etc
 
 # creación da rade común dos contenedores
 networks:
-  P7:  # a rede común das máquinas
-    driver: bridge
+ # A rede común das máquinas
+  P7:  # Nome da rede que creo
+    driver: bridge # adaptador puente
     ipam:
       driver: default
       config:
-        - subnet: 172.30.0.0/16
-          ip_range: 172.30.10.0/24
-          gateway: 172.30.10.254
+        - subnet: 172.30.0.0/16 # rede
+          ip_range: 172.30.10.0/24 # rango 
+          gateway: 172.30.10.254 # dirección ó router
 
 ```
 
