@@ -118,8 +118,8 @@ luk@luk-VirtualBox:~/P7-dns_linux/P7.-DNS-Linux$ docker network inspect p7-dns-l
 
 Entro en cada máquina e comprobo que está correcto novamente:
 
->[!NOTA]
->Para elo debo executar o comando `docker exec -it "nome do contenedor" sh`
+> [!NOTA]
+> Para elo debo executar o comando `docker exec -it "nome do contenedor" sh`
 
 Máquina cliente (alpine):
 ```
