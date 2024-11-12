@@ -1,16 +1,14 @@
-### Configura un sistema cun servidor DNS e un cliente alpine que cumpla os seguintes requisitos. aaa
-
-```
+### Configura un sistema cun servidor DNS e un cliente alpine que cumpla os seguintes requisitos.
 
 
-    Volumen por separado da configuración
-    Red propia interna para tódo-los contenedores
-    ip fixa no servidor
-    Configurar Forwarders
-    Crear Zona propia
-        Rexistros a configurar: NS, A, CNAME, TXT, SOA
-    Cliente con ferramientas de rede
-```
+### Volumen por separado da configuración
+### Red propia interna para tódo-los contenedores
+### ip fixa no servidor
+### Configurar Forwarders
+### Crear Zona propia
+		### Rexistros a configurar: NS, A, CNAME, TXT, SOA
+### Cliente con ferramientas de rede
+
 
 Creo o `docker-compose.yml`
 
@@ -59,6 +57,8 @@ networks:
           gateway: 172.30.10.254
 
 ```
+
+Levanto o docker compose con `docker compose up`
 
 Comprobo que están na misma rede inspeccionando a rede creada no arquivo Compose, con `docker compose inspect`
 
@@ -118,6 +118,9 @@ luk@luk-VirtualBox:~/P7-dns_linux/P7.-DNS-Linux$ docker network inspect p7-dns-l
 
 
 Entro en cada máquina e comprobo que está correcto novamente:
+
+>[!NOTA]
+>Para elo debo executar o comando `docker exec -it "nome do contenedor" sh`
 
 Máquina cliente (alpine):
 ```
@@ -192,28 +195,6 @@ round-trip min/avg/max = 0.204/0.271/0.383 ms
 ```
 
 ### Engado as carpetas de zonas e configuración, cos seus respectivos ficheiros:
-
-Na carpeta de zonas:
-```
-
-$TTL 38400	; 10 hours 40 minutes
-@		IN SOA	ns.practica7.org. some.email.address. (
-				10000002   ; serial
-				10800      ; refresh (3 hours)
-				3600       ; retry (1 hour)
-				604800     ; expire (1 week)
-				38400      ; minimum (10 hours 40 minutes)
-				)
-@		IN NS	ns.practica7.org.
-ns		IN A		172.30.10.1
-test	IN A			172.30.10.2
-www		IN A		172.30.10.3
-alias	IN CNAME	test
-texto	IN TXT		PROBA DO DNS
-
-
-
-```
 
 Na carpeta de configuración:
 ```
