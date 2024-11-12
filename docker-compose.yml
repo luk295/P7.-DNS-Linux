@@ -1,0 +1,40 @@
+services:
+  bind:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: dns_Practica_7
+
+    tty: true
+    ports:
+      - 55:53/udp
+      - 55:53/tcp
+    #- 127.0.0.1:953:953/tcp
+    volumes:
+    #  - ./configuracionOpciones:/etc/bind
+      - ./config:/etc/bind/
+      - ./zonas:/var/lib/bind/
+    
+    networks:
+      P7:
+        ipv4_address: 172.30.10.1
+      
+  cliente:
+    image: alpine  
+    container_name: p7-alpine
+    tty: true
+    
+    dns:
+      - 172.30.10.1
+    networks:
+      P7:
+        ipv4_address: 172.30.10.88
+       #caracteristicas de red. rango etc
+networks:
+  P7:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16
+          ip_range: 172.30.10.0/24
+          gateway: 172.30.10.254
+
