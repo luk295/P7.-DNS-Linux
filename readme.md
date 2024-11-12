@@ -1,12 +1,11 @@
-### Configura un sistema cun servidor DNS e un cliente alpine que cumpla os seguintes requisitos.
+### Configura un sistema cun servidor DNS e un cliente alpine que cumpla os seguintes requisitos:
 
 
 ### Volumen por separado da configuración
 ### Red propia interna para tódo-los contenedores
 ### ip fixa no servidor
 ### Configurar Forwarders
-### Crear Zona propia
-		### Rexistros a configurar: NS, A, CNAME, TXT, SOA
+### Crear Zona propia: Rexistros a configurar: NS, A, CNAME, TXT, SOA
 ### Cliente con ferramientas de rede
 
 
