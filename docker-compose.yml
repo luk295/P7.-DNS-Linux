@@ -23,6 +23,7 @@ services:
     tty: true
     
     dns:
+      # - 8.8.8.8   dns de google para facer probas
       - 172.30.10.1
     networks:
       P7:

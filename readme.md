@@ -260,14 +260,118 @@ No cliente executo os seguintes comandos: `apk update && apk add bind-tools`.
 
 Con estas ferramentes xa teño disponible o comando `dig`. Agora pruebo comandos dig con los registros:
 
+`dig ns.practica7.org`
+
+```
+/ # dig ns.practica7.org
+
+; <<>> DiG 9.18.27 <<>> ns.practica7.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 30015
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 5105d3081d9002990100000067364006856e5c13d9b33b20 (good)
+;; QUESTION SECTION:
+;ns.practica7.org.		IN	A
+
+;; ANSWER SECTION:
+ns.practica7.org.	38400	IN	A	172.30.10.1
+
+;; Query time: 11 msec
+;; SERVER: 127.0.0.11#53(127.0.0.11) (UDP)
+;; WHEN: Thu Nov 14 18:23:02 UTC 2024
+;; MSG SIZE  rcvd: 89
+
+/ # 
+
+```
+
+`dig test.practica.org` 
+```
+; <<>> DiG 9.18.27 <<>> test.practica7.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 38274
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 376912873d0b1b54010000006736407e2c8d225976d89a55 (good)
+;; QUESTION SECTION:
+;test.practica7.org.		IN	A
+
+;; ANSWER SECTION:
+test.practica7.org.	38400	IN	A	172.30.10.2
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.11#53(127.0.0.11) (UDP)
+;; WHEN: Thu Nov 14 18:25:02 UTC 2024
+;; MSG SIZE  rcvd: 91
+
+/ # 
+
+```
+
+`dig www.practica7.org`
+```
+; <<>> DiG 9.18.27 <<>> www.practica7.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1972
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 202dbfad484fb83201000000673640bc6770c58262c9574c (good)
+;; QUESTION SECTION:
+;www.practica7.org.		IN	A
+
+;; ANSWER SECTION:
+www.practica7.org.	38400	IN	A	172.30.10.3
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.11#53(127.0.0.11) (UDP)
+;; WHEN: Thu Nov 14 18:26:04 UTC 2024
+;; MSG SIZE  rcvd: 90
+
+/ # ^C
+
+```
+
+`dig alias.practica7.org`
+```
+/ # dig alias.practica7.org
+
+; <<>> DiG 9.18.27 <<>> alias.practica7.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 24268
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 10c9d73ab0b9de6c010000006736413e0f09d0eca9ccc892 (good)
+;; QUESTION SECTION:
+;alias.practica7.org.		IN	A
+
+;; ANSWER SECTION:
+alias.practica7.org.	38400	IN	CNAME	practicadeasirnumero7.com.practica7.org.
+
+;; AUTHORITY SECTION:
+practica7.org.		38400	IN	SOA	ns.practica7.org. some.email.address. 10000002 10800 3600 604800 38400
+
+;; Query time: 2 msec
+;; SERVER: 127.0.0.11#53(127.0.0.11) (UDP)
+;; WHEN: Thu Nov 14 18:28:14 UTC 2024
+;; MSG SIZE  rcvd: 173
+
+/ # 
 
 
-
-
-
-
-
-
+```
 ### Contido do Readme (usando markdown):
 ```
     Liñas do docker-compose explicadas
