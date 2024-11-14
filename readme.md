@@ -248,8 +248,11 @@ $TTL 38400	; 10 hours 40 minutes
 ns		IN A		172.30.10.1
 test	IN A			172.30.10.2
 www		IN A		172.30.10.3
-alias	IN CNAME	test
-texto	IN TXT		"PROBA DO DNS"
+alias	IN CNAME	practicadeasirnumero7.com
+mx   IN MX  10 mail.practica7.com.
+mx   IN MX  20 mail2.practica7.com.
+
+
 
 
 ```
